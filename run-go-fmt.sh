@@ -2,5 +2,11 @@
 set -e
 
 exec 5>&1
-output="$(gofmt -l -w "$@" | tee /dev/fd/5)"
-[[ -z "$output" ]]
+for file in "$@"; do
+    if [[ $file == "vendor/"* ]]; then
+      continue
+    fi
+
+    output="$(gofmt -l -w "$file" | tee /dev/fd/5)"
+    [[ -z "$output" ]]
+done
