@@ -30,5 +30,5 @@ Add this to your `.pre-commit-config.yaml`
    [https://github.com/BurntSushi/toml/tree/master/cmd/tomlv](https://github.com/BurntSushi/toml/tree/master/cmd/tomlv).
 - `no-go-testing`: Checks that no files are using `testing.T`, if you want
   developers to use a different testing framework.
-- `gometalinter`: Runs `gometalinter [--arg1=value1 ...] ./...`. Use the arguments for setting a [configuration file](https://github.com/alecthomas/gometalinter#configuration-file).
+- `gometalinter`: Runs `gometalinter [--arg1=value1 ...] ./...`. Use the arguments for setting a [configuration file](https://github.com/alecthomas/gometalinter#configuration-file). **It is highly recommended to include `--vendor` for exclude `vendor` folder and `--errors` flags to avoid warnings**
 - `govendor-status`: Runs `govendor status` to verify the status of the vendoring, requires golang.
