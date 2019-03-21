@@ -14,11 +14,10 @@ Add this to your `.pre-commit-config.yaml`
       hooks:
         - id: go-fmt
         - id: go-vet
-        - id: go-lint
-        - id: validate-toml
-        - id: no-go-testing
-        - id: gometalinter
         - id: govendor-status
+        - id: golangci-lint
+          args:
+          - --config .golangci.yml
 ```
 
 ## Available hooks
@@ -32,3 +31,4 @@ Add this to your `.pre-commit-config.yaml`
   developers to use a different testing framework.
 - `gometalinter`: Runs `gometalinter [--arg1=value1 ...] ./...`. Use the arguments for setting a [configuration file](https://github.com/alecthomas/gometalinter#configuration-file). **It is highly recommended to include `--vendor` for exclude `vendor` folder and `--errors` flags to avoid warnings**
 - `govendor-status`: Runs `govendor status` to verify the status of the vendoring, requires golang.
+- `golangci-lint`: Runs `golangci-lint run`, requires golang. 5x faster than gometalinter.
