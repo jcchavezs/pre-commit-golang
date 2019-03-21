@@ -43,3 +43,9 @@
     files: '\.go$'
     language: 'script'
     description: "Runs `govendor status` to verify the status of the vendoring, requires govendor"
+-   id: golangci-lint
+    name: 'golangci-lint'
+    entry: run-golangci-lint.sh
+    files: '\.go$'
+    language: 'script'
+    description: "Runs `golangci-lint run`. 5x faster than gometalinter."
