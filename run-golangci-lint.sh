@@ -16,13 +16,15 @@ for arg in "$@"; do
 	if [[ $arg == --* ]]; then
 		args="$args $arg"
   else
-    if [[ ! $arg =~ [^(vendor|third_party|testdata|examples|Godeps|builtin)] ]]; then
+    if [[ ! $arg =~ ^(vendor|third_party|testdata|examples|Godeps|builtin) ]]; then
       fns+=("$arg")
     fi
 	fi
 done
 
-for file in ${fns[*]}
-do
-  golangci-lint run $args $file
-done
+if [ ${#fns[@]} -gt 0 ]; then
+  for i in ${!fns[@]}
+  do
+    golangci-lint run $args ${fns[$i]}
+  done
+fi
